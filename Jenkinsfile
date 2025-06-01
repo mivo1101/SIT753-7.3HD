@@ -3,6 +3,7 @@ pipeline {
     environment {
         SONAR_TOKEN = credentials('SONAR_TOKEN_1') // Binds the SONAR_TOKEN credential to an environment variable
         DOCKER_TOKEN = credentials('DOCKER_TOKEN')
+        def version = "v${env.BUILD_NUMBER}"
     }
     tools {
         nodejs 'NodeJS' // Match the name from Global Tool Configuration
@@ -20,7 +21,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'docker build -t govietnam-website:latest .'
+                sh 'docker build -t govietnam-website:${version} .'
             }
         }
         stage('Run Tests') {
@@ -71,8 +72,9 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'DOCKER_TOKEN', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                        sh 'docker tag govietnam-website:latest $DOCKER_USER/govietnam-website:latest'
-                        sh 'docker push $DOCKER_USER/govietnam-website:latest'
+                        sh 'docker tag govietnam-website:${version} $DOCKER_USER/govietnam-website:${version}'
+                        sh 'docker push $DOCKER_USER/govietnam-website:${version}'
+                        sh 'export BUILD_VERSION=${version} && docker-compose -f docker-compose.yml down && docker-compose -f docker-compose.yml up -d'
                     }
                 }
             }
