@@ -20,7 +20,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'npm rebuild bcrypt sqlite3'
                 sh 'docker build -t govietnam-website:latest .'
             }
         }
