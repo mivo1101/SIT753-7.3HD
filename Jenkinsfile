@@ -37,7 +37,7 @@ pipeline {
                     rm -rf sonar-scanner || true
                     mv sonar-scanner-7.1.0.4889 sonar-scanner
                     ./sonar-scanner/bin/sonar-scanner \
-                        -Dsonar.projectKey=govietnam_SIT753-7.3HD \
+                        -Dsonar.projectKey=mivo1101_SIT753-7.3HD \
                         -Dsonar.organization=mivo1101 \
                         -Dsonar.host.url=https://sonarcloud.io \
                         -Dsonar.login=$SONAR_TOKEN
