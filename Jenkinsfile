@@ -71,8 +71,8 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'DOCKER_TOKEN', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                        sh 'docker tag shopping-website:latest $DOCKER_USER/shopping-website:latest'
-                        sh 'docker push $DOCKER_USER/shopping-website:latest'
+                        sh 'docker tag govietnam-website:latest $DOCKER_USER/govietnam-website:latest'
+                        sh 'docker push $DOCKER_USER/govietnam-website:latest'
                     }
                 }
             }
