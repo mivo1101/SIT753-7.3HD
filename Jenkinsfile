@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         SONAR_TOKEN = credentials('SONAR_TOKEN_1') // Binds the SONAR_TOKEN credential to an environment variable
-        DOCKER_TOKEN = credentials('DOCKER_TOKEN_1')
+        DOCKER_TOKEN = credentials('DOCKER_TOKEN')
     }
     tools {
         nodejs 'NodeJS' // Match the name from Global Tool Configuration
@@ -49,7 +49,7 @@ pipeline {
                 echo 'Running Snyk Dependency Scan...'
                 snykSecurity(
                     snykInstallation: 'Snyk',
-                    snykTokenId: 'SNYK_TOKEN',
+                    snykTokenId: 'SNYK_TOKEN_1',
                     organisation: 'mivo1101',
                     projectName: 'mivo1101_SIT753-7.3HD',
                     severity: 'low',
