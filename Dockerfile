@@ -4,7 +4,7 @@ FROM jenkins/jenkins:lts
 # Switch to root user to install packages
 USER root
 
-# Update apt
+# Install build tools for node-gyp
 RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 
 # Switch back to Jenkins user
