@@ -1,8 +1,8 @@
 const request = require('supertest');
-const app = require('../index'); // Import the configured app from index.js
-const createDB = require('../createDB');
+const app = require('./index'); // Import the configured app from index.js
+const createDB = require('./createDB');
 
-jest.mock('../createDB');
+jest.mock('./createDB');
 
 
 describe('POST /subscribe', () => {
