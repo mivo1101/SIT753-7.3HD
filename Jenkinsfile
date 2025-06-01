@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         SONAR_TOKEN = credentials('SONAR_TOKEN_1') // Binds the SONAR_TOKEN credential to an environment variable
-        DOCKER_TOKEN = credentials('DOCKER_TOKEN')
+        DOCKER_TOKEN = credentials('DOCKER_TOKEN_1')
     }
     tools {
         nodejs 'NodeJS' // Match the name from Global Tool Configuration
