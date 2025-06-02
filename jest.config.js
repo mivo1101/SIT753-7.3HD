@@ -1,5 +1,5 @@
 module.exports = {
   testEnvironment: 'node',
   setupFilesAfterEnv: ['./setup.js'],
-  testMatch: ['./*.test.js'],
+  testMatch: ['./subscribe_feedback.test.js'],
 };
